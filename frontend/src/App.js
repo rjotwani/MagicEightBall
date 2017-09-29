@@ -10,7 +10,7 @@ class App extends Component {
         super(props)
         this.state = {
             question: "",
-            answer: ""
+            answer: "Magic Eight Ball"
         }
         this.execute = this.execute.bind(this);
     }
@@ -22,23 +22,21 @@ class App extends Component {
         var answer = answers1[Math.floor(Math.random()*answers1.length)];
         //var answer = answers[Math.floor(Math.random()*answers.length)];
 
-        //eightBallContract.transferFrom("0x069fd4784D1DEd8A63923e83fF73c44414240043");
         //eightBallContract.transferFrom("0x069fd4784D1DEd8A63923e83fF73c44414240043", {from: "0x5d1EB7D49b406d210726CD627266247F86b71157", value: 1000000000000000});
+        eightBallContract.transferFrom("0xa6f316f85640e337aeac38fdc7bafe95fc4c93cf", {from: "0xca7c2e962063f4a85d8ac61f49a9eadcf4010a8a", value: 1000000000000000});
         this.setState({answer});
     }
 
     render() {
         return (
-          <body>
             <div className="App">
                 <img src={ logo } />
-                <h1>Magic Eight Ball</h1>
+                <h1>{this.state.answer}</h1>
                 <p>Enter your question:<br />
                 <input type="text" /><br /><br />
                 <button onClick={this.execute} type="submit">Donate 30 cents and Answer my Question</button>
-                <br /><br /><div className="answer">{this.state.answer}</div></p>
+                <br /><br /><span className="answer"></span></p>
             </div>
-          </body>
         );
     }
   }
