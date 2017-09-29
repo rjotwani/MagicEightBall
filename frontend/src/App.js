@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import logo from './8ball.png';
 import './App.css';
 import {eightBallContract} from './EthereumSetup';
+//import Web3 from 'web3';
 import web3 from './EthereumSetup';
-import Web3 from 'web3';
 
 class App extends Component {
 
@@ -14,60 +13,40 @@ class App extends Component {
             question: "",
             answer: ""
         }
-        this.changeQuestion = this.changeQuestion.bind(this);
-        //this.transferFrom = this.transferFrom.bind(this);
         this.execute = this.execute.bind(this);
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
+        var answers = ["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes, definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", "Do not count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."];
 
-    }
-
-    changeQuestion(e) {
-        this.setState({question: String(e.target.value)});
-    }
-
-    /*transferFrom(e) {
-        this.setState({b: e.target.value});
-    }*/
-
-    /*answerQuestion(e) {
-        this.setState({answer: String(e.target.value)});
+        var answer = answers[Math.floor(Math.random()*answers.length)];
+        //eightBallContract.sendTo().call();
+        eightBallContract.transferFrom(0x5d1EB7D49b406d210726CD627266247F86b71157, 0xB94c53B0E67FABac3d97173482663Ef597D4174a, 1000000000000000).send();
+        //eightBallContract.sendTo().send()
+        this.setState({answer});
     }*/
 
     execute(e) {
-        console.log(this.state.question)
-        /*var that = this;
-        eightBallContract.setQuestion(this.state.question, function(error, result){
-            console.log("YAY1");
-             if (!error) {
-                eightBallContract.answerQuestion(function(error){
-                     if (error) {
-                        console.error(error);
-                     }
-                     console.log("YAY2");
-                 });
-             } else {
-                 console.error(error);
-             }
-         });*/
-        eightBallContract.setQuestion(String(this.state.question))
-        eightBallContract.answerQuestion()
+        var answers = ["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes, definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", "Do not count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."];
+
+        var answer = answers[Math.floor(Math.random()*answers.length)];
+        console.log(eightBallContract);
+        //eightBallContract.transferFrom("0x069fd4784D1DEd8A63923e83fF73c44414240043");
+        eightBallContract.transferFrom("0x069fd4784D1DEd8A63923e83fF73c44414240043", {from: "0x5d1EB7D49b406d210726CD627266247F86b71157", value: 1000000000000000});
+        this.setState({answer});
     }
 
     render() {
         return (
             <div className="App">
-                <div className="App-header">
-                    <img src={ logo } className="App-logo" alt="logo" />
-                    <h2>Magic Eight Ball for Charity</h2>
-                </div>
+                <h1>Magic Eight Ball for Charity</h1>
+                <p>Enter your question:</p>
                 <p className="App-intro">
-                    Enter your question:
-                </p>
-                <p className="App-intro">
-                    <input onChange={this.changeQuestion} type="text" value={this.state.question} />
+                    <input type="text" />
                     <br /><br /><button onClick={this.execute} type="submit">Donate 30 cents and Answer my Question!</button>
+                </p>
+                <p>
+                    {this.state.answer}
                 </p>
             </div>
         );
