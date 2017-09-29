@@ -1,5 +1,75 @@
+body {
+  background-image: url('./bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
 .App {
   text-align: center;
+}
+
+.App h1 {
+  font-family: 'Code Light';
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.App p {
+  font-family: 'Roboto';
+  font-style: italic;
+  color: #fff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.App img {
+  height: 150px;
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
+
+.App input {
+  width: 500px;
+  padding: 12px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid lightblue;
+  border-radius: 2px;
+  background-color: #c9e7ef;
+  color: white;
+  font-size: 14px;
+}
+
+.App button {
+  background-color: #6ccee6;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  font-size: 14px;
+  font-family: 'roboto';
+  text-transform: uppercase;
+}
+
+.App button:hover {
+  background-color: #c9e7ef;
+  color: white;
+}
+
+.answer {
+  font-size: 20px;
+  text-decoration: bold;
+}
+
+textarea:focus, input:focus {
+    outline: none;
 }
 
 .App-logo {
